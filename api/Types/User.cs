@@ -4,17 +4,21 @@ namespace IdleGame.Api;
 public class User {
 
     [GraphQLDescription("The username associated with the user.")]
-    public string Name { get; set; }
+    public string Username { get; set; }
+    
+    [GraphQLDescription("The email associated with the user.")]
+    public string Email { get; set; }
 
-    [GraphQLDescription("The current count for the user.")]
-    public int Count { get; set; }
-
+    [GraphQLDescription("The password associated with the user.")]
+    public string Password { set; }
+    
     [GraphQLDescription("The ID for the user.")]
     [ID]
     public string Id { get; }
 
-    public User(string name, string id) {
+    public User(string name, string password, string id) {
         Id = id;
+        Password = password;
         Name = name;
     }
 }
