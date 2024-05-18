@@ -6,16 +6,17 @@ const fs = require('fs');
 const { createHandler } = require("graphql-http/lib/use/express")
 const { buildSchema } = require('graphql');
 const { parse } = require('csv-parse/sync');
+const path = require('path');
 
-var { ruruHTML } = require("ruru/server")
+const {ruruHTML} = require("ruru/server");
 
 const app = express()
     .use(cors())
     .use(json());
 
-const schema = buildSchema(fs.readFileSync('schema.graphql', 'utf8'));
-const characters = parse(fs.readFileSync('../data/characters.csv', 'utf8'), { columns: true });
-const species = parse(fs.readFileSync('../data/species.csv', 'utf8'), { columns: true });
+const schema = buildSchema(fs.readFileSync(path.resolve(__dirname, 'schema.graphql'), 'utf8'));
+const characters = parse(fs.readFileSync(path.resolve(__dirname, '../data/characters.csv'), 'utf8'), { columns: true });
+const species = parse(fs.readFileSync(path.resolve(__dirname, '../data/species.csv'), 'utf8'), { columns: true });
 
 const root = {
     characters: (args) => {

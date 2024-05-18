@@ -7,6 +7,7 @@
     "graphql": "^16.8.1",
     "graphql-http": "^1.22.1",
     "node": "^22.2.0",
+    "path": "^0.12.7",
     "ruru": "^2.0.0-beta.11"
   },
   "devDependencies": {
